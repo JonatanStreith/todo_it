@@ -32,7 +32,7 @@ public class People {
 
         //int indexOf = Arrays.binarySearch(peopleArray, personId);       //Assuming the sequencer function is used, the array will be sorted, so binarySearch works
 
-        return peopleArray[0];        //POTENTIAL RISK: If nonexistent Id is given, proper return won't work and error will happen. Address later.
+        return null;        //POTENTIAL RISK: If nonexistent Id is given, proper return won't work and error will happen. Address later.
     }                                       //Perhaps function that checks if an Id is valid, and use it before trying to return a Person?
 
     public Person AddPerson(String firstName, String lastName) {

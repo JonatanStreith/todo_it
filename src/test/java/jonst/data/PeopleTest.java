@@ -58,7 +58,7 @@ public class PeopleTest {
 
         Person[] test = classA.findAll();
 
-        System.out.println(test.length);
+
 
         assertNotNull(test);
         assertEquals(1, test[0].getPersonId());
