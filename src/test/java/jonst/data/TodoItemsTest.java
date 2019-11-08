@@ -101,4 +101,103 @@ public class TodoItemsTest {
 
     }
 
+    @Test
+    public void findByDoneStatusTest() {
+
+        TodoItems listA = new TodoItems();
+
+        //Let's say we've fed the dog but haven't watered the plants.
+
+        String description = "Feed the dog.";
+        Todo feedDog = listA.AddTodo(description);
+        feedDog.setDone(true);
+
+        description = "Water the plants.";
+        Todo waterPlants = listA.AddTodo(description);
+
+
+        Todo[] doneTasks = listA.findByDoneStatus(true);
+        Todo[] undoneTasks = listA.findByDoneStatus(false);
+
+        assertEquals(feedDog, doneTasks[0]);
+        assertEquals(waterPlants, undoneTasks[0]);
+    }
+
+    @Test
+    public void findByAssigneeIdTest() {
+        TodoItems listA = new TodoItems();
+
+        Person dogworker = new Person(1, "Esther", "Bright");
+        Person plantworker = new Person(2, "Asra", "Nox");
+
+
+        //Esther feeds the dog while Asra waters the plants.
+
+        String description = "Feed the dog.";
+        Todo feedDog = listA.AddTodo(description);
+        feedDog.setAssignee(dogworker);
+
+        description = "Water the plants.";
+        Todo waterPlants = listA.AddTodo(description);
+        waterPlants.setAssignee(plantworker);
+
+        Todo[] dogTasks = listA.findByAssignee(dogworker);
+        Todo[] plantTasks = listA.findByAssignee(plantworker);
+
+        assertEquals(feedDog, dogTasks[0]);
+        assertEquals(waterPlants, plantTasks[0]);
+
+    }
+
+    @Test
+    public void findByAssigneeTest() {
+        TodoItems listA = new TodoItems();
+
+        Person dogworker = new Person(1, "Esther", "Bright");
+        Person plantworker = new Person(2, "Asra", "Nox");
+
+
+        //Esther feeds the dog while Asra waters the plants.
+
+        String description = "Feed the dog.";
+        Todo feedDog = listA.AddTodo(description);
+        feedDog.setAssignee(dogworker);
+
+        description = "Water the plants.";
+        Todo waterPlants = listA.AddTodo(description);
+        waterPlants.setAssignee(plantworker);
+
+        Todo[] dogTasks = listA.findByAssignee(1);
+        Todo[] plantTasks = listA.findByAssignee(2);
+
+        assertEquals(feedDog, dogTasks[0]);
+        assertEquals(waterPlants, plantTasks[0]);
+
+    }
+
+    @Test
+    public void findUnassignedTest() {
+        TodoItems listA = new TodoItems();
+
+        Person dogworker = new Person(1, "Esther", "Bright");
+        Person plantworker = new Person(2, "Asra", "Nox");
+
+
+        //Esther feeds the dog while Asra waters the plants.
+
+        String description = "Feed the dog.";
+        Todo feedDog = listA.AddTodo(description);
+        feedDog.setAssignee(dogworker);
+
+        description = "Water the plants.";
+        Todo waterPlants = listA.AddTodo(description);
+        //waterPlants.setAssignee(plantworker);     //Asra isn't assigned this time!
+
+        Todo[] unassignedTasks = listA.findUnassigned();
+
+
+        assertEquals(waterPlants, unassignedTasks[0]);
+
+
+    }
 }
