@@ -20,13 +20,13 @@ public class PersonTest
         String firstName = "Alex";
         String lastName = "Hawkwind";
 
-        Person testCase = new Person(personId, firstName, lastName);
+        Person testCase = new Person(personId, firstName, lastName);        //Test if we can create a person
 
-        assertNotNull(testCase);
+        assertNotNull(testCase);        //Check to see if it was made at all
 
-        assertEquals(555, testCase.getPersonId());
-        assertEquals("Alex", testCase.getFirstName());
-        assertEquals("Hawkwind", testCase.getLastName());
+        assertEquals(555, testCase.getPersonId());          //Check to see if Id is right
+        assertEquals("Alex", testCase.getFirstName());      //Check to see if firstName is right
+        assertEquals("Hawkwind", testCase.getLastName());   //Check to see if lastName is right
 
     }
 }
