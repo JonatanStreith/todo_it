@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 public class TodoItemsTest {
 
+        //Note: Methods don't test well when testing the whole class because they affect the same data. Test methods separately.
 
     @Test
     public void addTodoTest() {
@@ -198,6 +199,39 @@ public class TodoItemsTest {
 
         assertEquals(waterPlants, unassignedTasks[0]);
 
+
+    }
+
+    @Test
+    public void removeItemTest() {
+
+        TodoItems listA = new TodoItems();
+
+        int idToRemove = 2;
+
+        Todo result1 = listA.AddTodo("Feed the dog.");
+        Todo result2 = listA.AddTodo("Water the plants.");
+        Todo result3 = listA.AddTodo("Slay the goblin that keeps eating our children.");
+        Todo result4 = listA.AddTodo("Pick up the mail.");
+
+
+
+
+
+        int lengthBefore = listA.findAll().length;  //Get length before we delete something.
+
+        listA.RemoveItem(idToRemove);
+
+        int lengthAfter = listA.findAll().length;  //Get length after
+
+
+
+
+
+
+
+        assertTrue(lengthBefore == lengthAfter + 1);    //We've deleted one item, so the array should be one shorter
+        assertNull(listA.findById(idToRemove));                 //If an item id is invalid, findById() returns a null object. Ergo, if we've deleted it, we should get a null.
 
     }
 }
